@@ -1,0 +1,58 @@
+
+.group-ef .ef-tx-t[class*=efch] {
+    -webkit-transform: translateY(50px) scale3d(1,1.6,.8);
+    transform: translateY(50px) scale3d(1,1.6,.8);
+}
+.group-ef.ef-begin .efch-1 {
+    -webkit-transition-delay:0s!important;
+    -o-transition-delay: 0s!important;
+    transition-delay: 0s!important;
+}
+.group-ef.ef-begin .efch-2 {
+    -webkit-transition-delay: .2s!important;
+    -o-transition-delay: .2s!important;
+    transition-delay: .2s!important;
+}
+.group-ef.ef-begin .efch-3 {
+    -webkit-transition-delay: .4s!important;
+    -o-transition-delay: .4s!important;
+    transition-delay: .4s!important;
+}
+.group-ef.ef-begin .efch-4 {
+    -webkit-transition-delay: .6s!important;
+    -o-transition-delay: .6s!important;
+    transition-delay: .6s!important;
+}
+.group-ef.ef-begin .efch-5 {
+    -webkit-transition-delay: .8s!important;
+    -o-transition-delay: .8s!important;
+    transition-delay: .8s!important;
+}
+.group-ef.ef-begin .efch-6 {
+    -webkit-transition-delay: 1s!important;
+    -o-transition-delay: 1s!important;
+    transition-delay: 1s!important;
+}
+.group-ef.ef-begin .efch-7 {
+    -webkit-transition-delay: 1.2s!important;
+    -o-transition-delay: 1.2s!important;
+    transition-delay: 1.2s!important;
+}
+.group-ef .ef-img-t[class*=efch]{
+    -webkit-transform: translateY(100px);
+    -ms-transform: translateY(100px);
+    transform: translateY(100px);
+}
+
+.group-ef.ef-begin [class*=efch]{
+    opacity: 1;
+    -webkit-transform: translate(0,0) scale3d(1,1,1);
+    transform: translate(0,0) scale3d(1,1,1);
+}
+.group-ef [class*=efch] {
+    opacity: 0;
+    display: block;
+    -webkit-transition: all 1s cubic-bezier(0,.15,0,1);
+    -o-transition: all 1s cubic-bezier(0,.15,0,1);
+    transition: all 1s cubic-bezier(0,.15,0,1);
+}
