@@ -64,6 +64,11 @@ Route::group(['prefix' => 'gui-bat-dong-san','middleware'=>['CheckAuthWeb']], fu
     Route::post("realestate-save-ajax","RealestateController@postRealestateAjaxSave")->name('web.realestate.save');
 
 });
+/*TRAO DOI */
+Route::group(['prefix' => 'trao-doi-nha-dat','middleware'=>['CheckAuthWeb']], function () {
+    Route::get("/","RealestateController@getTrans")->name('web.traodoinhadat');
+});
+/* */
 Route::group(['prefix' => 'taikhoan','middleware'=>['CheckAuthWeb']], function () {
     Route::get("ho-so","AccountController@getIndex")->name('web.account.hoso');
     Route::get("tin-da-gui","AccountController@getTinDaGui")->name('web.account.tindagui');

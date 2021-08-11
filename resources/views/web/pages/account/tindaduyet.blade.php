@@ -40,8 +40,9 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th style="width:85%"> @sortablelink('realestate_title','Tiêu đề')</th>
-                                        <th style="width:15%"> @sortablelink('realestate_view','Lượt xem')</th>
+                                        <th style="width:70%"> @sortablelink('realestate_title','Tiêu đề')</th>
+                                        <th style="width:10%"> @sortablelink('realestate_view','Lượt xem')</th>
+                                        <th style="width:20%; text-align:center">Trao đổi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -53,6 +54,12 @@
                                                 <tr id="item-{{$item->id}}">
                                                     <td><a class="text-info" href="{{ getRealestateUrl($item) }}">{{ $item->realestate_title }} <br> <span class="text-success"> <i class="fa fa-check"></i> Đã duyệt : {{ time_Ago($item->realestate_time) }} </span>  </a> </td>
                                                     <td class="count">{{ $item->realestate_view }}</td>
+                                                    <td class="text-center">
+                                                        <a href="{{route('web.traodoinhadat')}}" value="{{$item->id}}" data-id="{{$item->id}}" data-url="" class="d-block">
+                                                            <img width="48px" src="{{asset('themes/web/img/bluehand.png')}}" title="Trao đổi Nhà Đất" alt="Trao đổi Nhà Đất">
+                                                            <span class="d-block">Trao đổi Nhà Đất</span>
+                                                        </a>
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         @else
@@ -61,7 +68,6 @@
                                         </tr>
                                         @endif
                                     @endisset
-
                                 </tbody>
 
                             </table>

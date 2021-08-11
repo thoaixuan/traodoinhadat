@@ -29,11 +29,19 @@ class RealestateController extends Controller
         SEOTools::opengraph()->setUrl(\URL::current());
         return view("web.pages.realestate.send",['realestate'=>new Realestate(),'type'=>'insert']);
     }
+    /* trao do nha dat*/
+    public function getTrans(Request $request)
+    {
+        SEOTools::setTitle("Trao đổi nhà đất");
+        SEOTools::opengraph()->setUrl(\URL::current());
+        return view("web.pages.realestate.trans");
+    }
+    /* */
     public function postRealestateAjaxSend(RealestateRequest $request)
     {
-        if(checkAntispam($request)){
+        /*if(checkAntispam($request)){
             return checkAntispam($request);
-        }
+        }*/
         $result = $this->RealestateRepository->saveSendData($request);
         if($result){
             return  response()->json(array('status'=>'success','icon'=>'success','msg'=>"Gửi thành công"), 200);
