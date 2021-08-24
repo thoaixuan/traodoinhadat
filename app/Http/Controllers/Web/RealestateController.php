@@ -11,7 +11,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Realestate;
 use App\Views\RealestateView;
+use App\Views\RealestateSaveView;
+
 use App\Repositories\Realestate\RealestateRepository;
+use App\Http\Requests\Web\Realestate\TransRequest;
 use App\Repositories\Categorys\CategorysRepository;
 use App\Http\Requests\Web\Realestate\RealestateRequest;
 use Auth;
@@ -29,14 +32,80 @@ class RealestateController extends Controller
         SEOTools::opengraph()->setUrl(\URL::current());
         return view("web.pages.realestate.send",['realestate'=>new Realestate(),'type'=>'insert']);
     }
-    /* trao do nha dat*/
-    public function getTrans(Request $request)
+    /* ----------------------------------- TRAO DOI NHA DAT -------------------------------- */
+    public function gettrans(Request $request)
     {
         SEOTools::setTitle("Trao đổi nhà đất");
         SEOTools::opengraph()->setUrl(\URL::current());
-        return view("web.pages.realestate.trans");
+       return view("web.pages.realestate.trans");
     }
-    /* */
+    public function getInfo(Request $request)
+    {
+        SEOTools::setTitle("Trao đổi nhà đất");
+        SEOTools::opengraph()->setUrl(\URL::current());
+        $link = $request->input('link');
+        $title = $request->input('title');
+        return view("web.pages.realestate.trans",['link' => $link,'title' => $title]);
+    }
+    public function postRealestateAjaxTrans(TransRequest $request)
+    {
+        $result = $this->RealestateRepository->saveTransData($request);
+        if($result){
+            return  response()->json(array('status'=>'success','icon'=>'success','msg'=>"Gửi thành công"), 200);
+        }else{
+            return  response()->json(array('status'=>'error','icon'=>'danger','msg'=>"Gửi không thành công"), 200);
+        }
+        //return View::make('greeting');
+    }
+    //show list
+    public function viewDanhSachTrans(Request $request)
+    {
+  
+        SEOTools::setTitle("Danh sách Bất Động Sản trao đổi");
+        $data = $this->runTinTraoDoi($request);
+        $cate_type = "trao_doi";
+        $q = $request->q;
+        return view("web.pages.realestate.show.danh-sach-trans",[
+            'type'=>'tintraodoi',
+            'cate_type'=> $cate_type,
+            'q'=> $q,
+            'data'=> $data
+        ]); 
+    }
+    public function runTinTraoDoi(Request $request)
+    {
+        $search = $request->input('q');
+        $cate_type = "trao_doi";
+        $where = array(
+            ['id','!=',null],
+           /* ['user_id_send','=',user()->id]*/
+        );
+        if($cate_type!=""){
+            $where[]=['cate_type','=', $cate_type];
+        }
+        if(empty($search)){
+            $RealestateView =RealestateView::where($where)->sortable()
+            ->orderBy('id','desc')
+            ->paginate(10);
+            $RealestateView->withPath(\URL::current()."?q=$request->q&cate_type=$request->cate_type");
+            return $RealestateView;
+        }else{
+            $RealestateView =RealestateView::where($where)->Where(function($query)use($search){
+                $query->where('id', 'LIKE', "%{$search}%")
+                ->orWhere('province_name', 'LIKE',"%{$search}%")
+                ->orWhere('district_name', 'LIKE',"%{$search}%")
+                ->orWhere('ward_name', 'LIKE',"%{$search}%")
+                ->orWhere('created_at', 'LIKE',"%{$search}%")
+                ;
+            })
+            ->sortable()
+            ->orderBy('id','desc')
+            ->paginate(10);
+            $RealestateView->withPath(\URL::current()."?q=$request->q&cate_type=$request->cate_type");
+            return $RealestateView;
+        }
+    }
+    /* ------------------------------------------------------------------------------------ */
     public function postRealestateAjaxSend(RealestateRequest $request)
     {
         /*if(checkAntispam($request)){

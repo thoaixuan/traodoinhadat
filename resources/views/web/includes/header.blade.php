@@ -27,6 +27,7 @@
                 </div>
             </li>
             <li><a href="{{ route('web.realestate.all','du-an') }}"><span>Dự án</span></a></li>
+            <li><a href="{{ route('traodoinhadat.tintuc','trao_doi') }}"><span>Trao đổi nhà đất</span></a></li>
         </ul>
         <div class="wrap-menu-header right">
             <ul class="menu-top-header " data-style="1">

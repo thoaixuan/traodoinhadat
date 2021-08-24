@@ -8,7 +8,9 @@
             <div class="qa-icon"> <a href="{{ route('web.realestate.all','thue/nha-rieng') }}"> <i class="icon icon-house-2"></i>Thuê nhà </a> </div>
             <div class="qa-icon"> <a href="{{ route('web.realestate.all','mua/can-ho') }}"> <i class="icon icon-house-3"></i>Mua căn hộ </a> </div>
             <div class="qa-icon"> <a href="{{ route('web.realestate.all','thue/can-ho') }}"> <i class="icon icon-house-4"></i>Thuê căn hộ </a> </div>
-            <div class="qa-icon"> <a href="{{ route('web.realestate.all','mua/dat-nen') }}"> <i class="icon icon-house-5"></i>Mua đất nền </a> </div>
+            <div class="qa-icon"> 
+                <a href="{{ route('traodoinhadat.tintuc','trao_doi') }}') }}"> <i class="icon icon-house-5"></i>Trao đổi BĐS</a> 
+            </div>
             <div class="qa-icon"> <a href="{{ route('web.realestate.all','du-an') }}"> <i class="icon icon-house-6"></i>Mua đất nền dự án</a> </div>
             <div class="qa-icon"> <a href="{{ route('web.contact.index') }}"> <i class="icon icon-house-7"></i>Yêu cầu BĐS </a> </div>
             <div class="qa-icon"> <a href="tel:+{{ setting()->contact_phone }}" title="{{ setting()->contact_phone }}"> <i class="icon icon-house-8"></i>Liên hệ Hotline</a> </div>

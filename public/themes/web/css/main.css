@@ -11,6 +11,7 @@
     --neo-orange-color:#f06d21;
     --light-gray-color: #d1d1d1;
 }
+.text-title-trans{ margin-bottom: unset; }
 .phongcach .news__head {
     margin-top: 15px;
     position: relative;
@@ -22,6 +23,7 @@
     justify-content: space-between;
     margin-bottom: 15px;
 }
+.drop-bg {background: transparent; border: unset; }
 * {
     margin: 0;
     padding: 0;

@@ -31,18 +31,19 @@
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group ">
-                                            <button type="submit" class="btn btn-info btn-block">Tìm kiếm</button>
+                                            <button type="submit" class="btn btn-primary btn-block">Tìm kiếm</button>
                                         </div>
                                     </div>
                                 </div>
                             </form>
                             <div class="table-responsive">
-                            <table class="table table-bordered">
+                            <table class="table table-bordered table-sm">
                                 <thead>
                                     <tr>
-                                        <th style="width:65%"> @sortablelink('realestate_title','Tiêu đề')</th>
-                                        <th style="width:15%"> @sortablelink('realestate_view','Lượt xem')</th>
-                                        <th style="width:20%; text-align:center">Trao đổi</th>
+                                        <th style="width:25%">Loại tin</th>
+                                        <th style="width:45%">@sortablelink('realestate_title','Thông tin BĐS')</th>
+                                        <th style="width:15%" class="text-center">Ngày gửi</th>
+                                        <th style="width:15%" class="text-center">Tác vụ</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -52,32 +53,36 @@
                                             @foreach ($data as $item)
                                                 @php $i++;@endphp
                                                 <tr id="item-{{$item->id}}">
-                                                    <td><a class="text-info" href="{{ getRealestateUrl($item) }}">{{ $item->realestate_title }} <br> 
-                                                        <span class="text-success"> 
-                                                            <i class="fa fa-check"></i> Đã duyệt : {{ time_Ago($item->realestate_time) }}
-                                                         </span></a> 
+                                                    <td>Tin trao đổi : <br/> {{$item->cate_name}} đang 
+                                                        <span class="badge badge-primary"> @if($item->send_cate_type=='cate_buy') Bán  @endif @if($item->send_cate_type=='cate_lease') Cho thuê @endif</span>
                                                     </td>
-                                                    <td class="count text-center">{{ $item->realestate_view }}</td>
+                                                    <td>
+                                                        <b>Bất động sản hiện tại : <a class="text-info" href="{{$item->realestate_slug}}">Xem</a></b><br/>
+                                                        <b>Khoảng giá trị trao đổi:  </b>{{$item->realestate_tien_ich}} <br/>
+                                                        <b>Khu vực : </b>  @if($item->province_name){{$item->province_name}}@endif 
+                                                        @if($item->district_name) - {{$item->district_name}}@endif 
+                                                        @if($item->ward_name) - {{$item->ward_name}}@endif <br>
+                                                        <b>Mô tả : </b>  {!!$item->realestate_mota!!} <br/>
+                                                        
+                                                    </td>
+                                                    <td>
+                                                        <span class="badge badge-warning"><i class="fas fa-calendar-alt"></i> {{$item->created_at}}</span>
+                                                        <span class="badge badge-default"><i class="fas fa-user-clock"></i> {{time_Ago($item->send_realestate_time)}}</span>
+                                                    </td>
                                                     <td class="text-center">
-                                                        <form method="POST" action="{{route('web.infotrans')}}">
-                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                                        <input type="hidden" name="link" value="{{ getRealestateUrl($item) }}"  />
-                                                        <input type="hidden" name="title" value="{{ $item->realestate_title }}"  />
-                                                        <button type="submit" class="d-block drop-bg">
-                                                            <img width="48px" src="{{asset('themes/web/img/bluehand.png')}}" title="Trao đổi Nhà Đất" alt="Trao đổi Nhà Đất">
-                                                            <span class="d-block">Trao đổi Nhà Đất</span>
-                                                        </button>
-                                                        </form>
+                                                            <button type="button" value="{{$item->id}}" data-id="{{$item->id}}" data-url="{{route('web.account.deleteTinTraoDoi')}}" class="btn btn-danger btn-delete btn-xs"><i class="fa fa-trash"></i> </button>
                                                     </td>
                                                 </tr>
                                             @endforeach
                                         @else
                                         <tr>
-                                            <th colspan="2" class="text-center">Không có dữ liệu !</th>
+                                            <th colspan="5" class="text-center">Không có dữ liệu !<br/>Bạn phải có <a href="{{ route('web.account.tindaduyet') }}" class="text-primary">BĐS đang cho thuê/bán đã được duyệt</a> mới có thể đăng tin trao đổi BĐS tương tự.</th>
                                         </tr>
                                         @endif
                                     @endisset
+
                                 </tbody>
+
                             </table>
                             </div>
                         </div>

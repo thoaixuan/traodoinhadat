@@ -6,10 +6,17 @@
                 <!-- Form Đăng Tin -->
                 <div class="container-fluid content-dangtin dang-tin-owner-logged">
                     <h2 class="title-dangtin">Thông tin BĐS cần trao đổi.</h2>
-                    <h5>BĐS đổi hiện tại : Title Post</h5>
+                    <h5>BĐS đổi hiện tại :
+                        @if(isset($title) && isset($link))
+                            <a class="text-info" href="{{$link}}" rel="nofollow"> {{$title}}</a>
+                        @else
+                        <script>window.location = "/";</script>
+                        @endif
+                    </h5>
                     <div class="bl-info-credibility send-post">
                         <div class="row">
-                            <form id="formAction" action="{{route('web.realestate.ajaxSend')}}">
+                            <form id="formActionTrans" name="formActionTrans"  method="POST" action="{{route('web.realestate.ajaxtrans')}}">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                     <div class="col-md-12">
                                         <div class="row">
                                             <div class="col-md-6">
@@ -17,13 +24,14 @@
                                                 <label class=" control-label"> 
                                                     <span class="text">Khoảng giá trị bạn muốn trao đổi <strong class="color-red">*</strong></span>
                                                 </label>
-                                                    <input type="text" name="khoanggiatri" class="form-control" placeholder="Điền giá trị gần như tương đương BĐS bạn muốn đổi ...">
+                                                    <input type="text" id="khoanggiatri" name="khoanggiatri" class="form-control" placeholder="Điền giá trị gần như tương đương BĐS bạn muốn đổi ...">
+                                                    @if(isset($title) && isset($link))
+                                                    <input type="hidden" value="{{$link}}" id="linkpost" name="linkpost" class="form-control">
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="form-group">
-                                                    @include('web.includes.search.khuvuc-trans')
-                                                </div>
+                                                <div class="form-group"> @include('web.includes.search.khuvuc-trans') </div>
                                             </div>
                                         </div>
                                     </div>  
@@ -31,10 +39,7 @@
                                             <div class="row">
                                                 <div class="col-md-12 ">
                                                     @include('web.pages.realestate.includes.loaihinh-giaodich')
-                                                </div>
-                                                <div class="col-md-6">
-                                                    @include('web.pages.realestate.includes.mota')
-                                                    <label>Mô tả chi tiết yêu cầu BĐS bạn cần trao đổi.</label>
+                                                    <span>Bạn muốn trao đổi BĐS của bạn với một BĐS khác đang bán/cho thuê.</span>
                                                 </div>
                                                 <div class="col-md-6 control-label">
                                                     <label class="text">Lưu ý <strong class="color-red">*</strong>
@@ -43,6 +48,10 @@
                                                         <br/>Trao đổi phòng trọ/căn hộ đang cho thuê với một Bất Động Sản khác.
                                                         <br/> Chúng tôi tiếp nhận yêu cầu và liên hệ ngay khi có thông tin phù hợp với yêu cầu của bạn!.
                                                     </p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    @include('web.pages.realestate.includes.mota')
+                                                    <label>Mô tả chi tiết yêu cầu BĐS bạn cần trao đổi.</label>
                                                 </div>
                                             </div>
                                     </div>
@@ -74,8 +83,8 @@
                                             <div class="col-sm-12">
                                                 <div id="alertJS"></div>
                                             </div>
-                                            <div class="col-sm-6">
-                                                <button type="button" class="btn btn-danger" >Gửi Thông Tin</button>
+                                            <div class="col-sm-12 text-center">
+                                                <button type="button" id="btn-transsend" class="btn btn-danger" >Gửi Thông Tin</button>
                                             </div>
                                         </div>
                                     </div>
@@ -97,16 +106,16 @@
 @section('runJS')
 @parent
 <script src="{{asset('themes/admin/plugins/summernote/summernote-bs4.min.js')}}"></script>
-<script src="{{asset('web/realestate/action.js')}}"></script>
+<script src="{{asset('web/realestate/trans.js')}}"></script>
 <script>
-   var action = new action();
-   action.datas={
+   var trans = new trans();
+   trans.datas={
         provinceID : "{{setting()->provinceID}}",
         districtID : "{{setting()->districtID}}",
         wardID : "{{setting()->wardID}}",
-        urlListPublic :"{{route('web.account.tindagui')}}",
-        loai_hinh_thuc_bds:"{{ user()->loai_hinh_thuc_bds }}"
+        loai_hinh_thuc_bds:"{{ user()->loai_hinh_thuc_bds }}",
+        redirectSendSuccess:"{{route('web.account.tintraodoi')}}",
    }
-   action.init();
+   trans.init();
 </script>
 @endsection

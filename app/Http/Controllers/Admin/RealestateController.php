@@ -10,6 +10,7 @@ use Artesaos\SEOTools\Facades\JsonLd;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Realestate;
+use App\Views\RealestateView;
 use App\Repositories\Realestate\RealestateRepository;
 use App\Http\Requests\Admin\Realestate\RealestateRequest;
 use App\Http\Requests\Admin\Realestate\RealestateReceivedRequest;
@@ -88,6 +89,65 @@ class RealestateController extends Controller
             return  response()->json(array('status'=>'success','icon'=>'success','msg'=>"Cập nhật thành công " ,'url'=>route('admin.realestate.view')), 200);
         }else{
             return  response()->json(array('status'=>'error','icon'=>'danger','msg'=>"Cập nhật thất bại !" ,'url'=>route('admin.realestate.view')), 200);
+        }
+    }
+    /*Transs */
+    public function getAddTransList(Request $request)
+    {   
+        // admin.realestate.trans
+        SEOTools::setTitle("Tài khoản - Tin trao đổi");
+        $data = $this->runTinTraoDoi($request);
+        $cate_type = "trao_doi";
+        $q = $request->q;
+        return view("admin.pages.realestate.listtrans",[
+            'type'=>'tintraodoi',
+            'cate_type'=> $cate_type,
+            'q'=> $q,
+            'data'=> $data
+        ]);
+    }
+    public function runTinTraoDoi(Request $request)
+    {
+        $search = $request->input('q');
+        $cate_type = "trao_doi";
+        $where = array(
+            ['id','!=',null],
+           /* ['user_id_send','=',user()->id]*/
+        );
+        if($cate_type!=""){
+            $where[]=['cate_type','=', $cate_type];
+        }
+        if(empty($search)){
+            $RealestateView =RealestateView::where($where)->sortable()
+            ->orderBy('id','desc')
+            ->paginate(10);
+            $RealestateView->withPath(\URL::current()."?q=$request->q&cate_type=$request->cate_type");
+            return $RealestateView;
+        }else{
+            $RealestateView =RealestateView::where($where)->Where(function($query)use($search){
+                $query->where('id', 'LIKE', "%{$search}%")
+                ->orWhere('province_name', 'LIKE',"%{$search}%")
+                ->orWhere('district_name', 'LIKE',"%{$search}%")
+                ->orWhere('ward_name', 'LIKE',"%{$search}%")
+                ->orWhere('created_at', 'LIKE',"%{$search}%")
+                ;
+            })
+            ->sortable()
+            ->orderBy('id','desc')
+            ->paginate(10);
+            $RealestateView->withPath(\URL::current()."?q=$request->q&cate_type=$request->cate_type");
+            return $RealestateView;
+        }
+    }
+    //X
+    public function deleteTinTraoDoi(Request $request)
+    {
+        $Realestate = Realestate::where('id','=',$request->id)->first();
+        if($Realestate){
+            $Realestate->delete();
+            return  response()->json(array('status'=>'success','icon'=>'success','msg'=>"Xóa thành công "), 200);
+        }else{
+            return  response()->json(array('status'=>'error','icon'=>'error','msg'=>"Xóa không thành công ! "), 200);
         }
     }
     public function editReceived(RealestateReceivedRequest $request)

@@ -67,12 +67,17 @@ Route::group(['prefix' => 'gui-bat-dong-san','middleware'=>['CheckAuthWeb']], fu
 /*TRAO DOI */
 Route::group(['prefix' => 'trao-doi-nha-dat','middleware'=>['CheckAuthWeb']], function () {
     Route::get("/","RealestateController@getTrans")->name('web.traodoinhadat');
+    Route::post("getinfo","RealestateController@getInfo")->name('web.infotrans');
+    Route::post("ajax","RealestateController@postRealestateAjaxTrans")->name('web.realestate.ajaxtrans');
+    //tin tuc trao doi
 });
+Route::get("danh-sach-bds-trao-doi","RealestateController@viewDanhSachTrans")->name('traodoinhadat.tintuc');
 /* */
 Route::group(['prefix' => 'taikhoan','middleware'=>['CheckAuthWeb']], function () {
     Route::get("ho-so","AccountController@getIndex")->name('web.account.hoso');
     Route::get("tin-da-gui","AccountController@getTinDaGui")->name('web.account.tindagui');
     Route::get("tin-da-duyet","AccountController@getTinDaDuyet")->name('web.account.tindaduyet');
+    Route::get("tin-trao-doi","AccountController@getTinTraoDoi")->name('web.account.tintraodoi');
     Route::get("tin-da-luu","AccountController@getTinDaLuu")->name('web.account.tindaluu');
     Route::get("doi-mat-khau","AccountController@getDoiMatKhau")->name('web.account.doimatkhau');
     Route::get("lien-he-admin","AccountController@getLienHe")->name('web.account.lienhe');
@@ -80,6 +85,7 @@ Route::group(['prefix' => 'taikhoan','middleware'=>['CheckAuthWeb']], function (
     Route::post("update","AccountController@postUpdateProfile")->name('web.account.update');
     Route::post("changePass","AccountController@postChangePassword")->name('web.account.changePass');
     Route::post("xoa-tin-da-gui","AccountController@deleteTinDaGui")->name('web.account.deleteTinDaGui');
+    Route::post("xoa-tin-trao-doi","AccountController@deleteTinTraoDoi")->name('web.account.deleteTinTraoDoi');
     Route::post("xoa-tin-da-luu","AccountController@deleteTinDaLuu")->name('web.account.deleteTinDaLuu');
     Route::post("lienheadmin","AccountController@postLienHe")->name('web.account.postLienHe');
 

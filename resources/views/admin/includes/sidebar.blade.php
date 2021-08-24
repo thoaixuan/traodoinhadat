@@ -150,6 +150,15 @@
                       </a>
                     </li>
                     @endif
+                    @if (checkRole('realestate.tintraodoi'))
+                    <li class="menu-open-new nav-item">
+                      <a href="{{route('admin.realestate.trans') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Tin trao đổi</p>
+                        <span class="right badge badge-info">{{ countRealestateTrans() }}</</span>
+                      </a>
+                    </li>
+                    @endif
                     @if (checkRole('realestate.received'))
                     <li class="menu-open-new nav-item">
                       <a href="{{route('admin.realestate.received') }}" class="nav-link">

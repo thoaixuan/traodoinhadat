@@ -316,6 +316,45 @@ class RealestateRepository  extends EloquentRepository
             return true;
         }return false;
     }
+    /*------------------------------Save database trans data--------------------------------------*/
+    public function saveTransData($request)
+    {
+        //dd($request->all()); debugs
+        $post = new  Realestate();
+        $post->cate_type = "trao_doi";
+        $post->user_id = user()->id;
+        $post->user_id_send = user()->id;
+        $post->provinceID = $request->provinceID;
+        $post->districtID = $request->districtID;
+        $post->wardID = $request->wardID;
+        $post->send_cate_type = $request->cate_type;
+        $post->realestate_tien_ich = $request->khoanggiatri;
+        $post->realestate_slug = $request->linkpost;/*linkpost */
+        $post->category_id = $request->category_id;/*loai bds*/
+        $post->send_realestate_mota = $request->realestate_mota;
+        $post->realestate_mota = $request->realestate_mota;
+        $post->realestate_status = 'send';
+        $post->send_realestate_time = time();
+        // dd($request->all());
+        $post->save();
+        if($post){
+            $request['id']= $post->id;
+            $request['user_id']= $post->user_id;
+            configMail();
+             $rs =  _sendMail([
+                    "template"=>"vendor.mail.guitin",
+                    "data"=>[
+                        "full_name"=>user()->full_name,
+                        "email"=>user()->email,
+                        'phone'=>user()->phone,
+                    ],
+                    "mailSend"=>[setting()->MAIL_RECEIVE],
+                    "subject"=>"YÊU CẦU TRAO ĐỔI BẤT ĐỘNG SẢN"
+                ]);
+            return true;
+        }return false;
+    }
+    /* ---------------------------------------------------------------------------------------------------------- */
     public function saveRealestate($request)
     {
         if($request->status=='add'){

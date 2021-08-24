@@ -93,6 +93,10 @@ Route::group(['prefix' => $route_admin,'middleware'=>['CheckAuthAdmin']], functi
 
     });
     Route::group(['prefix' => 'realestate'], function () {
+        Route::get("tin-trao-doi","RealestateController@getAddTransList")->name('admin.realestate.trans');
+        Route::post("xoa-tin-trans","RealestateController@deleteTinTraoDoi")->name('admin.deleteTinTraoDoi');
+        //Route::post("tin-trao-doi","RealestateController@getAddTransByID")->name('admin.realestate.transbyid');
+
         Route::post("add","RealestateController@Add")->name('admin.realestate.add')->middleware('CheckPermission:realestate.add');
         Route::post("edit","RealestateController@Edit")->name('admin.realestate.edit')->middleware('CheckPermission:realestate.edit');
         Route::post("delete","RealestateController@Delete")->name('admin.realestate.delete')->middleware('CheckPermission:realestate.delete');

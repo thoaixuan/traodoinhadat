@@ -42,6 +42,20 @@ class AccountController extends Controller
             'data'=> $data
         ]);
     }
+    //Tin trao doi
+    public function getTinTraoDoi(Request $request)
+    {
+        SEOTools::setTitle("Tài khoản - Tin trao đổi");
+        $data = $this->runTinTraoDoi($request);
+        $cate_type = "trao_doi";
+        $q = $request->q;
+        return view("web.pages.account.tintraodoi",[
+            'type'=>'tintraodoi',
+            'cate_type'=> $cate_type,
+            'q'=> $q,
+            'data'=> $data
+        ]);
+    } 
     public function getTinDaDuyet(Request $request)
     {
         $countSave = countRealestatePublicWeb();
@@ -127,6 +141,44 @@ class AccountController extends Controller
         if(empty($search)){
             $RealestateView =RealestateView::where($where)->sortable()
             ->orderBy('id','desc')
+            ->paginate(10);
+            $RealestateView->withPath(\URL::current()."?q=$request->q&cate_type=$request->cate_type");
+            return $RealestateView;
+        }else{
+            $RealestateView =RealestateView::where($where)->Where(function($query)use($search){
+                $query->where('id', 'LIKE', "%{$search}%")
+                ->orWhere('full_name', 'LIKE',"%{$search}%")
+                ->orWhere('province_name', 'LIKE',"%{$search}%")
+                ->orWhere('district_name', 'LIKE',"%{$search}%")
+                ->orWhere('ward_name', 'LIKE',"%{$search}%")
+                ->orWhere('cate_name', 'LIKE',"%{$search}%")
+                ->orWhere('send_house_number', 'LIKE',"%{$search}%")
+                ->orWhere('send_house_address', 'LIKE',"%{$search}%")
+                ->orWhere('created_at', 'LIKE',"%{$search}%")
+                ;
+            })
+            ->sortable()
+            ->orderBy('id','desc')
+            ->paginate(10);
+            $RealestateView->withPath(\URL::current()."?q=$request->q&cate_type=$request->cate_type");
+            return $RealestateView;
+        }
+    }
+    //run tin trao doi
+    public function runTinTraoDoi(Request $request)
+    {
+        $search = $request->input('q');
+        $cate_type = "trao_doi";
+        $where = array(
+            ['id','!=',null],
+            ['user_id_send','=',user()->id]
+        );
+        if($cate_type!=""){
+            $where[]=['cate_type','=', $cate_type];
+        }
+        if(empty($search)){
+            $RealestateView =RealestateView::where($where)->sortable()
+            ->orderBy('user_id','desc')
             ->paginate(10);
             $RealestateView->withPath(\URL::current()."?q=$request->q&cate_type=$request->cate_type");
             return $RealestateView;
@@ -237,6 +289,17 @@ class AccountController extends Controller
     public function deleteTinDaLuu(Request $request)
     {
         $Realestate = RealestateSave::where('user_id','=',user()->id)->where('realestate_id','=',$request->id)->first();
+        if($Realestate){
+            $Realestate->delete();
+            return  response()->json(array('status'=>'success','icon'=>'success','msg'=>"Xóa thành công "), 200);
+        }else{
+            return  response()->json(array('status'=>'error','icon'=>'error','msg'=>"Xóa không thành công ! "), 200);
+        }
+    }
+    //X
+    public function deleteTinTraoDoi(Request $request)
+    {
+        $Realestate = Realestate::where('user_id','=',user()->id)->where('id','=',$request->id)->first();
         if($Realestate){
             $Realestate->delete();
             return  response()->json(array('status'=>'success','icon'=>'success','msg'=>"Xóa thành công "), 200);

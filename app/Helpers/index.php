@@ -161,6 +161,10 @@ function countRealestateSend()
 {
     return  RealestateView::where('realestate_status','=','send')->count();
 }
+function countRealestateTrans()
+{
+    return  RealestateView::where('cate_type','=','trao_doi')->count();
+}
 function countRealestatePublic()
 {
     return  RealestateView::where('realestate_status','=','published')->count();

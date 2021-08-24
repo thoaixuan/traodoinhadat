@@ -29,6 +29,10 @@
             <a href="{{ route('web.account.tindagui') }}" class="list-group-item list-group-item-action {{$type=="tindagui"?"active":""}}">
                 <i class="fas fa-list"></i>Tin đã gửi <span class="float-right ">(<span class="count">{{ countRealestateSendWeb() }}</span>)</span>
             </a>
+            <a href="{{ route('web.account.tintraodoi') }}" class="list-group-item list-group-item-action {{$type=="tintraodoi"?"active":""}}">
+                <i class="fas fa-list"></i>Tin Trao đổi  <span class="badge badge-info">New</span>
+                {{-- <span class="float-right ">(<span class="count">{{ countRealestateSendWeb() }}</span>)</span> --}}
+            </a>
 
             <a href="{{ route('web.account.tindaduyet') }}" class="list-group-item list-group-item-action {{$type=="tindaduyet"?"active":""}}">
                 <i class="fas fa-list"></i>Tin đã duyệt <span class="float-right ">(<span class="count">{{ countRealestatePublicWeb() }}</span>)</span>
