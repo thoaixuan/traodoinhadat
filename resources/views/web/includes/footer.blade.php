@@ -5,7 +5,7 @@
                 <div class="footer-info">
                     <p>
                         <a href="https://ing.vn" target="_blank" class="footer-info__logo">
-                            <img class="" width="200px" src="{{asset('themes/web/img/logo-footer.png')}}" class="img-fluid"> ING.VN
+                            <img class="" width="200px" src="{{asset(setting()->logo)}}" class="img-fluid"> ING.VN
                         </a>
                     </p>
                     <p>
