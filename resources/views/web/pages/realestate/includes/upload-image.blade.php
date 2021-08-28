@@ -1,5 +1,5 @@
 <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-8">
 
                 <label class="control-label">
                     <span class="text">Hình ảnh nhà</span> (upload tối thiểu 2 hình,
@@ -40,4 +40,7 @@
                 </div>
 
         </div>
+        <div class="col-sm-4">
+        @include('web.pages.realestate.includes.mota')
+        </div> 
 </div>

@@ -38,8 +38,11 @@
                                     </div>
                                     <div class="col-sm-12">
                                             <div class="row">
-                                                <div class="col-md-6 ">
-                                                    @include('web.pages.realestate.includes.mota')
+                                                <div class="col-md-6">
+                                                    <div class="trans-block">
+                                                    <label class="col-sm-12 control-label"> <span class="text">Thông tin Bất Động Sản bạn mốn trao đổi </span> </label>
+                                                    <textarea name="infotransbds" class="form-control" placeholder="Nhập thông tin BĐS cần trao đổi! Loại Bất Động Sản, khu vực, khoảng giá trị Bất Động sản...vv." rows="4" maxlength ="3000"></textarea>
+                                                    </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     @include('web.pages.realestate.includes.yeucaukhac')

@@ -301,7 +301,7 @@
                                                     @if ( file_exists(public_path(setting()->icon))&&setting()->icon!="")
                                                     <img id="icon_review"  height="100%" width="100%" src="{{asset(setting()->icon)}}"/>
                                                     @else
-                                                    <img id="icon_review"  height="100%" width="100%" src="{{asset('uploads/defaults/logo_ing.png')}}"/>
+                                                    <img id="icon_review"  height="100%" width="100%" src="{{asset('uploads/defaults/default_img.jpg')}}"/>
                                                     @endif
                                                     <div class="btn-select-image-inner">
                                                     </div>
@@ -314,7 +314,7 @@
                                                     @if ( file_exists(public_path(setting()->logo))&&setting()->logo!="")
                                                     <img id="logo_review" height="100%"  width="100%" src="{{asset(setting()->logo)}}"/>
                                                     @else
-                                                    <img id="logo_review" height="100%"  width="100%" src="{{asset('uploads/defaults/logo_ing.png')}}"/>
+                                                    <img id="logo_review" height="100%"  width="100%" src="{{asset('uploads/defaults/no_img.webp')}}"/>
                                                     @endif
                                                     <div class="btn-select-image-inner">
                                                     </div>

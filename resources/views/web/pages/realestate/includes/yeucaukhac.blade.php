@@ -23,6 +23,12 @@
 							<label for="request-type-4">Hoàn thiện hồ sơ pháp lý rao bán (Quyền sở hữu, tách thửa, kê khai thừa kế,...)</label>
 						</div>
 					</div>
+					<div class="col-sm-12">
+						<div class="bl-checkbox">
+							<input type="checkbox" id="request-type-5" class="request-type" value="on" name="send_traodoibds" value="4">
+							<label for="request-type-5">Trao đổi Bất Động Sản với một Bất Bất Động Sản khác</label>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

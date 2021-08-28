@@ -297,3 +297,10 @@ function action(){
         }
     }
 }
+/*Remove white space text area */
+$( document ).ready(function() {
+    //$("#remove_whitespace").trim();
+    $('#remove_whitespace').each(function(){
+        $(this).val($(this).val().trim());
+    });
+});

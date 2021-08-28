@@ -215,7 +215,7 @@ class RealestateRepository  extends EloquentRepository
         $post->provinceID = $request->provinceID;
         $post->districtID = $request->districtID;
         $post->wardID = $request->wardID;
-
+        $post->info_traodoibds = $request->info_traodoibds;
         $post->cate_type = $request->cate_type;
         $post->realestate_title = $request->realestate_title;
         $post->realestate_slug =$this->getSlug($request,'update');
@@ -296,6 +296,9 @@ class RealestateRepository  extends EloquentRepository
         $post->send_nhucau_thamdinh = $request->send_nhucau_thamdinh;
         $post->send_nhucau_cungcapthongtin = $request->send_nhucau_cungcapthongtin;
         $post->send_nhucau_hoangthienhoso = $request->send_nhucau_hoangthienhoso;
+        /*trao doi bds */
+        $post->send_traodoibds = $request->send_traodoibds;
+        $post->info_traodoibds = $request->infotransbds;
         // dd($request->all());
         $post->save();
         if($post){

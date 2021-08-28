@@ -4,8 +4,8 @@
             <div class="col-lg-6 col-md-5 efch-1 ef-img-t">
                 <div class="footer-info">
                     <p>
-                        <a href="https://ing.vn" target="_blank" class="footer-info__logo">
-                            <img class="" width="200px" src="{{asset(setting()->logo)}}" class="img-fluid"> ING.VN
+                        <a href="https://traodoinhadat.com/" target="_blank" class="footer-info__logo">
+                            <img class="" width="200px" src="{{asset(setting()->logo)}}" class="img-fluid"> TRAODOINHADAT.COM
                         </a>
                     </p>
                     <p>
@@ -25,7 +25,7 @@
             <div class="col-lg-6 col-md-7">
                 <div class="row grid-space-5">
                     <div class="col-md-4  efch-2 ef-img-t">
-                        <div class="footer__title">Về ING</div>
+                        <div class="footer__title">Về TRAODOINHADAT.COM</div>
                         <ul>
                             <li>
                                 <a href="{{ route('web.page.about') }}">Giới thiệu</a>
@@ -45,7 +45,7 @@
                         </ul>
                     </div>
                     <div class="col-md-4  efch-3 ef-img-t">
-                        <div class="footer__title">Dịch vụ của ING</div>
+                        <div class="footer__title">Dịch vụ</div>
                         <ul>
                             <li>
                                 <a href="{{ route('web.realestate.send') }}">Gửi BDS miễn phí</a>
@@ -68,7 +68,7 @@
                         </ul>
                     </div>
                     <div class="col-md-4  efch-4 ef-img-t">
-                        <div class="footer__title">Hệ thống ING</div>
+                        <div class="footer__title">Hệ thống TRAODOINHADAT</div>
                         <ul>
                             <li>
                                 <a href="{{ route('web.realestate.all','mua') }}">Mua nhà</a>
@@ -94,16 +94,16 @@
                 </a>-->
                 &nbsp;
                 <a rel="noreferrer" target="_blank" href="">
-                    <img class="img-fluid" alt="ING app" src="{{asset('themes/web/img/g-play.svg')}}">
+                    <img class="img-fluid" alt=" app" src="{{asset('themes/web/img/g-play.svg')}}">
                 </a>
             </div>
             <div class="col-lg-3 col-md-5  efch-6 ef-img-t">
                 <a rel="noreferrer" target="_blank" href="">
-                    <img class="logo-bocongthuong" alt="ING" title="" src="{{asset('themes/web/img/img-dathongbao.png')}}">
+                    <img class="logo-bocongthuong" alt="https://traodoinhadat.com/" title="" src="{{asset('themes/web/img/img-dathongbao.png')}}">
                 </a>
             </div>
             <div class="col-lg-4 col-md-5  efch-6 ef-img-t">
-                <div class="footer__title--small">Đăng ký nhận thông tin mới nhất từ ING</div>
+                <div class="footer__title--small">Đăng ký nhận thông tin mới nhất </div>
                 <div id="alertJSSubscribe"></div>
                 <div role="search" id="email-subcribe" class="footer__search footer__input">
                     <form id="formSubscribe" action="{{ route('web.subscribe.add') }}">
@@ -147,7 +147,7 @@
     </div>
     <div class="container d-sm-block d-md-none" id="before-footer">
         <div class="wlogo">
-            <a href="/" class="logo"><img alt="ING" src="{{asset('themes/web/img/logo-footer.png')}}"></a>
+            <a href="/" class="logo"><img alt="TRAO ĐỔI NHÀ ĐẤT" src="{{asset('themes/web/img/logo-footer.png')}}"></a>
             <ul class="footer__social">
                 <li>
                     <a rel="noreferrer" class="item" title="" target="_blank" href="">

@@ -268,6 +268,14 @@
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="form-group" >
+                                                                <label>Thông tin trao đổi BĐS <span class="text-danger">*</span></label>
+                                                                <textarea class="form-control" id="remove_whitespace" rows="4" name="info_traodoibds">
+                                                                {!! $realestate->info_traodoibds !!}
+                                                                </textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="form-group" >
                                                                 <label>Loại hình giao dịch <span class="text-danger">*</span></label>
                                                                 <select class="form-control form-control-sm select2" id="cate_type" name="cate_type">
                                                                     <option value=""> -- Chọn loại tin  --</option>

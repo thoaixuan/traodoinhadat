@@ -40,7 +40,8 @@
                         <thead>
                             <tr>
                                 <th  style="width: 10%"> User gửi tin</th>
-                                <th  style="width: 50%"> @sortablelink('realestate_title','Thông tin BĐS')</th>
+                                <th  style="width: 30%"> @sortablelink('realestate_title','Thông tin BĐS')</th>
+                                <th  style="width: 20%">Thông tin trao đổi BĐS <span class="right badge badge-info">New</span> </th>
                                 <th  style="width: 20%"> Khu vực</th>
                                 <th style="width: 20%" class="text-center">Tác vụ</th>
                             </tr>
@@ -66,6 +67,9 @@
                                                 @if($item->send_house_address) - {{$item->send_house_address}}@endif @if($item->ward_name) - {{$item->ward_name}}@endif <br>
                                                 <span class="badge badge-warning"><i class="fas fa-calendar-alt"></i> {{$item->created_at}}</span>
                                                 <span class="badge badge-danger"><i class="fas fa-user-clock"></i> {{time_Ago($item->send_realestate_time)}}</span>
+                                            </td>
+                                            <td>
+                                            @if($item->send_traodoibds =="on"){{$item->info_traodoibds}}@endif
                                             </td>
                                             <td>
                                                 @if($item->province_name){{$item->province_name}}@endif @if($item->district_name) - {{$item->district_name}}@endif @if($item->ward_name) - {{$item->ward_name}}@endif

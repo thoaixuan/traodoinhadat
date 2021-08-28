@@ -11,7 +11,7 @@ return [
         'defaults'       => [
             'title'        => "It's Over 9000!", // set false to total remove
             'titleBefore'  => false, // Put defaults.title before page title, like 'It's Over 9000! - Dashboard'
-            'description'  => 'Cập nhật giá cả mua bán bất động sản Bà Rịa - Vũng Tàu mới nhất . Thông tin bất động sản rõ ràng. Sắp xếp theo nhu cầu dễ chọn lựa.', // set false to total remove
+            'description'  => 'Cập nhật giá cả mua bán bất động sản Bà Rịa - Vũng Tàu mới nhất . Thông tin bất động sản rõ ràng. Trao đổi Bất Động Sản.', // set false to total remove
             'separator'    => ' - ',
             'keywords'     => [],
             'canonical'    => false, // Set null for using Url::current(), set false to total remove

@@ -63,28 +63,49 @@
                                     @if ($data->result->province_name){{ $data->result->province_name }} @endif</b>
                             </div>
                             <div class="label mb-10">
-                                    @if ($data->result->cate_type=='cate_buy')
-                                    <div class="label-1 info__label">
-                                        <span class="p-type-listing">Mua bán</span>
-                                    </div>
-                                    @endif
-                                    @if ($data->result->cate_type=='cate_lease')
-                                    <div class="label-1 danger__label">
-                                        <span class="p-type-listing">Cho thuê</span>
-                                    </div>
-                                    @endif
-                                    @if ($data->result->cate_type=='cate_project')
-                                    <div class="label-1 success__label">
-                                        <span class="p-type-listing">Dự án</span>
-                                    </div>
-                                    @endif
+                                <!-- -->
+                                @switch($data->result->cate_type)
+                                        @case('cate_buy')
+                                        <div class="label-1 info__label">
+                                            <span class="p-type-listing">Mua bán</span>
+                                        </div>
+                                            @break
+
+                                        @case('cate_lease')
+                                        <div class="label-1 danger__label">
+                                            <span class="p-type-listing">Cho thuê</span>
+                                        </div>
+                                            @break
+
+                                        @case('cate_project')
+                                        <div class="label-1 success__label">
+                                            <span class="p-type-listing">Dự án</span>
+                                        </div>
+                                            @break
+                                        @default
+                                            
+                                @endswitch
+                                <!-- -->
                                     @if ($data->result->realestate_expertise=='on')
                                     <span class="label-2"><i class="fa fa-check"></i> Đã thẩm định</span>
                                     @endif
                                     @if ($data->result->realestate_sold=='on')
                                     <span class="label-2 success__label"><i class="fa fa-check"></i> Đã bán</span>
                                     @endif
-
+                                    <!--traodoibds-->
+                                    @if ($data->result->send_traodoibds=='on')
+                                    <button class="drop-bg" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                            <img src="http://localhost:8000/themes/web/img/bluehand.png" title="Trao đổi Nhà Đất" alt="Trao đổi Nhà Đất" width="48px">
+                                            <span class="d-inline heartbeat">Trao đổi Nhà Đất <span class="badge badge-info">New</span>
+                                                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                                            </span>
+                                    </button>
+                                    <div class="collapse" id="collapseExample">
+                                        <div class="card card-body">
+                                         {!! $data->result->info_traodoibds !!}
+                                        </div>
+                                    </div>
+                                    @endif
                             </div>
                             <div class="clearfix">
                                 <span class="price"><b>{{ number_format($data->result->realestate_price) }}</b> VND</span>

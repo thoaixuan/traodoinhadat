@@ -221,3 +221,10 @@ function action(){
         }
     }
 }
+
+//trans-block
+$( document ).ready(function() {
+    $("#request-type-5").click(function(){
+        $(".trans-block").toggle();
+      });
+});
