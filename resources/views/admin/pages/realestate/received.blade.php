@@ -69,7 +69,25 @@
                                                 <span class="badge badge-danger"><i class="fas fa-user-clock"></i> {{time_Ago($item->send_realestate_time)}}</span>
                                             </td>
                                             <td>
-                                            @if($item->send_traodoibds =="on"){{$item->info_traodoibds}}@endif
+                                            @if($item->send_traodoibds =="on")
+                                            Khu vực :{!! $item->traodoi_locate !!} <br/>
+                                            Khoảng giá {!! number_format($item->traodoi_price) !!} <br/>
+                                            Loại BĐS : 
+                                            @switch( $item->traodoi_type )
+                                                @case( 'ccch' )
+                                                    Chung cư/ Căn hộ
+                                                @break
+                                                @case( 'datnen' )
+                                                    Đất nền
+                                                @break
+                                                @case( 'nharieng' )
+                                                    Nhà riêng
+                                                @break
+                                                @default 
+                                                @break
+                                            @endswitch
+                                           
+                                            @endif
                                             </td>
                                             <td>
                                                 @if($item->province_name){{$item->province_name}}@endif @if($item->district_name) - {{$item->district_name}}@endif @if($item->ward_name) - {{$item->ward_name}}@endif

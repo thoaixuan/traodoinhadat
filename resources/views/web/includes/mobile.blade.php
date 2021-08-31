@@ -26,7 +26,7 @@
                     @endforeach
                 </ul>
             </li>
-            <li class=""><a href="{{ route('traodoinhadat.tintuc','trao_doi') }}"><i class="icon-mn li-7"></i> Trao đổi BĐS</a></li>
+            {{--<li class=""><a href="{{ route('traodoinhadat.tintuc','trao_doi') }}"><i class="icon-mn li-7"></i> Trao đổi BĐS</a></li>--}}
             <li class=""><a href="{{ route('web.realestate.all','du-an') }}" id="nav-du-an"><i class="icon-mn li-4"></i> Dự án</a></li>
             <li class=""><a href="{{ route('web.news.index') }}"><i class="icon-mn li-5"></i> Tin tức</a></li>
             @foreach (getPagesHeader() as $item)

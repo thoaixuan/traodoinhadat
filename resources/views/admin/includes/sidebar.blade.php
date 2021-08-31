@@ -150,6 +150,7 @@
                       </a>
                     </li>
                     @endif
+                    {{--
                     @if (checkRole('realestate.tintraodoi'))
                     <li class="menu-open-new nav-item">
                       <a href="{{route('admin.realestate.trans') }}" class="nav-link">
@@ -159,12 +160,13 @@
                       </a>
                     </li>
                     @endif
+                    --}}
                     @if (checkRole('realestate.received'))
                     <li class="menu-open-new nav-item">
                       <a href="{{route('admin.realestate.received') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Tin Đã nhận</p>
-                        <span class="right badge badge-info">{{ countRealestateSend() }}</</span>
+                        <span class="right badge badge-danger">{{ countRealestateSend() }}</</span>
                       </a>
                     </li>
                     @endif

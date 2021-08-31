@@ -102,7 +102,11 @@
                                     </button>
                                     <div class="collapse" id="collapseExample">
                                         <div class="card card-body">
-                                         {!! $data->result->info_traodoibds !!}
+                                            <center><h5>Thông tin Trao đổi Bất Động Sản</h5></center>
+                                        <span>Loại Bất Động Sản: {!! $data->result->traodoi_type !!}</span>
+                                        <span>Khu vực : {!! $data->result->traodoi_locate !!}</span>
+                                        <span>Khoảng giá : {!! number_format($data->result->traodoi_price) !!} đ</span>
+                                        <span>Mô tả : {!! $data->result->info_traodoibds !!}</span>
                                         </div>
                                     </div>
                                     @endif

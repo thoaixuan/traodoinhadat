@@ -11,6 +11,8 @@
     --neo-orange-color:#f06d21;
     --light-gray-color: #d1d1d1;
 }
+.border-dashed{border: 1px solid dashed;}
+.fix-mb{margin-bottom: unset !important;}
 .trans-block{display: none;}
 .text-title-trans{ margin-bottom: unset; }
 .phongcach .news__head {

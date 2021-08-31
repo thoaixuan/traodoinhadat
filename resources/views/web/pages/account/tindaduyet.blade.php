@@ -59,6 +59,7 @@
                                                     </td>
                                                     <td class="count text-center">{{ $item->realestate_view }}</td>
                                                     <td class="text-center">
+                                                        {{--
                                                         <form method="POST" action="{{route('web.infotrans')}}">
                                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                                         <input type="hidden" name="link" value="{{ getRealestateUrl($item) }}"  />
@@ -68,6 +69,9 @@
                                                             <span class="d-block">Trao đổi Nhà Đất</span>
                                                         </button>
                                                         </form>
+                                                        --}}
+                                                        {{$item->send_traodoibds=='on'?'Đã gửi yêu cầu':''}}
+                                                       
                                                     </td>
                                                 </tr>
                                             @endforeach

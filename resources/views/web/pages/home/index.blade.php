@@ -208,7 +208,7 @@
     <!-- Tại sao chọn -->
     <section class="why-option ef-lazy group-ef">
         <div class="container">
-            <h2 class="text-center efch-1 ef-tx-t">Vì sao chọn ING?</h2>
+            <h2 class="text-center efch-1 ef-tx-t">Vì sao chọn TRAODOINHADAT.COM?</h2>
             <div class="row">
                 <div class="col-md-4">
                     <div class="wo__item">

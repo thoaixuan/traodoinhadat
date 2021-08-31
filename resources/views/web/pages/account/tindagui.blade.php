@@ -56,6 +56,7 @@
                                                     <td>{{$item->send_mo_gioi=='moi_gioi'?'Môi giới':'Chủ nhà'}}
                                                             @if($item->cate_type=='cate_buy') - Bán - @endif @if($item->cate_type=='cate_lease') - Cho thuê - @endif
                                                         {{$item->cate_name}}
+                                                        <br/>{{$item->send_traodoibds=='on'?'Tin trao đổi BĐS':''}}
                                                     </td>
                                                     <td>
                                                         <b>Giá GD:  </b>

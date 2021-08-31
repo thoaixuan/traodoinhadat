@@ -25,7 +25,7 @@
             <div class="col-lg-6 col-md-7">
                 <div class="row grid-space-5">
                     <div class="col-md-4  efch-2 ef-img-t">
-                        <div class="footer__title">Về TRAODOINHADAT.COM</div>
+                        <div class="footer__title">Về chúng tôi</div>
                         <ul>
                             <li>
                                 <a href="{{ route('web.page.about') }}">Giới thiệu</a>
@@ -68,7 +68,7 @@
                         </ul>
                     </div>
                     <div class="col-md-4  efch-4 ef-img-t">
-                        <div class="footer__title">Hệ thống TRAODOINHADAT</div>
+                        <div class="footer__title">Lĩnh vực</div>
                         <ul>
                             <li>
                                 <a href="{{ route('web.realestate.all','mua') }}">Mua nhà</a>

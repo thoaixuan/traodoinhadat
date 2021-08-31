@@ -266,14 +266,34 @@
                                             <div class="card card-widget ">
                                                 <div class="card-body ">
                                                     <div class="row">
+                                                    @if($realestate->send_traodoibds == 'on')
                                                         <div class="col-md-12">
                                                             <div class="form-group" >
-                                                                <label>Thông tin trao đổi BĐS <span class="text-danger">*</span></label>
+                                                                <label>Thông tin trao đổi BĐS <span class="text-danger">*</span></label> <br/>
+                                                                <label>Loại BĐS :</label>
+                                                                @switch( $realestate->traodoi_type )
+                                                                    @case( 'ccch' )
+                                                                        Chung cư/ Căn hộ
+                                                                    @break
+                                                                    @case( 'datnen' )
+                                                                        Đất nền
+                                                                    @break
+                                                                    @case( 'nharieng' )
+                                                                        Nhà riêng
+                                                                    @break
+                                                                    @default 
+                                                                    @break
+                                                                @endswitch
+                                                                <br/>
+                                                                <label>Khu vực</label> <input name="traodoi_locate" type="text" value="{!! $realestate->traodoi_locate !!}" class="form-control">
+                                                                <label>Khoảng giá</label> <input id="trans_price" name="traodoi_price" type="text" value="{!! number_format($realestate->traodoi_price) !!}" class="form-control">
+                                                                <label>Mô tả</label>
                                                                 <textarea class="form-control" id="remove_whitespace" rows="4" name="info_traodoibds">
                                                                 {!! $realestate->info_traodoibds !!}
                                                                 </textarea>
                                                             </div>
                                                         </div>
+                                                    @endif
                                                         <div class="col-md-12">
                                                             <div class="form-group" >
                                                                 <label>Loại hình giao dịch <span class="text-danger">*</span></label>

@@ -75,9 +75,9 @@ function action(){
         $(document).delegate(".remove-item",'click',function(){
             $("#"+$(this).val()).remove();
         });
-        $(document).on("keypress , paste", "#realestate_price,#send_realestate_price_rent", function (e) {
+        $(document).on("keypress , paste", "#realestate_price,#send_realestate_price_rent,#trans_price", function (e) {
 			if (/^-?\d*[,.]?(\d{0,3},)*(\d{3},)?\d{0,3}$/.test(e.key)) {
-				$("#realestate_price,#send_realestate_price_rent").on("input", function () {
+				$("#realestate_price,#send_realestate_price_rent,#trans_price").on("input", function () {
 					e.target.value = numberSeparator(e.target.value);
 				});
 			} else {
